@@ -30,6 +30,9 @@ public class JobAdvertise {
 	@Column(name="id")
 	private int id;
 	
+	@Column(name="job_advertise_name")
+	private String jobAdvertiseName;
+	
 	@Column(name="job_description")
 	private String jobDescription;
 	
@@ -67,6 +70,8 @@ public class JobAdvertise {
 	@ManyToOne()
 	@JoinColumn(name="city_id",referencedColumnName = "id")
 	private City city;
+	
+	
 	
 	
 	

@@ -37,4 +37,6 @@ public class Candidate extends User {
 	
 	
 	
+	
+	
 }

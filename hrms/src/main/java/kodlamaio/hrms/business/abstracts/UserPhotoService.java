@@ -1,21 +1,14 @@
 package kodlamaio.hrms.business.abstracts;
 
-import java.util.List;
-
 import org.springframework.web.multipart.MultipartFile;
 
-import kodlamaio.hrms.core.results.DataResult;
 import kodlamaio.hrms.core.results.Result;
+import kodlamaio.hrms.entities.concretes.Employer;
 import kodlamaio.hrms.entities.concretes.User;
 
-public interface UserService {
+public interface UserPhotoService {
 	
-	DataResult<List<User>> getAll();
-	
-	
-	
-	
-	
-	
+	Result saveImage(MultipartFile file, int userId);
+	void photoTableSetter(User user);
 
 }

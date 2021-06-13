@@ -13,15 +13,13 @@ import kodlamaio.hrms.entities.concretes.User;
 
 @Service
 public class UserManager implements UserService{
-
-	
 	private UserDao userDao;
+	
 	
 	@Autowired
 	public UserManager(UserDao userDao) {
 		super();
 		this.userDao=userDao;
-		
 
 	}
 	
@@ -32,7 +30,11 @@ public class UserManager implements UserService{
 		SuccessDataResult<List<User>>(userDao.findAll(),"Kullanicilar Başarılı Şekilde Listelendi");
 	}
 
+
 	
 	}
+
+	
+	
 
 

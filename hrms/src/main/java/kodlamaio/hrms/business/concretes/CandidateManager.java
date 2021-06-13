@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 
 import kodlamaio.hrms.business.abstracts.CandidateService;
+import kodlamaio.hrms.business.abstracts.UserPhotoService;
 import kodlamaio.hrms.core.adapters.abstracts.MernisDemoService;
 import kodlamaio.hrms.core.adapters.abstracts.RegexService;
 import kodlamaio.hrms.core.adapters.abstracts.VerificationCodeService;
@@ -32,11 +33,12 @@ public class CandidateManager implements CandidateService {
 	private MernisDemoService mernisDemoService;
 	private RegexService regexService;
 	private EmployeeDao employeeDao;
+	private UserPhotoService userPhotoService;
 	
 
 	@Autowired
 	public CandidateManager(CandidateDao candidateDao, VerificationCodeService verificationCodeService,
-			MernisDemoService mernisDemoService,RegexService regexService,EmployeeDao employeeDao) {
+			MernisDemoService mernisDemoService,RegexService regexService,EmployeeDao employeeDao,UserPhotoService userPhotoService) {
 		super();
 		this.candidateDao = candidateDao;
 		
@@ -44,6 +46,7 @@ public class CandidateManager implements CandidateService {
 		this.mernisDemoService = mernisDemoService;	
 		this.regexService = regexService;
 		this.employeeDao=employeeDao;
+		this.userPhotoService=userPhotoService;
 	
 	}
 
@@ -88,6 +91,7 @@ public class CandidateManager implements CandidateService {
 		else{
 			this.candidateDao.save(candidate);
 			this.verificationCodeService.createActivationCode(candidate);
+			this.userPhotoService.photoTableSetter(candidate);
 			return new SuccessResult("Kullanıcı sisteme kaydedildi.Fakat doğrulama yapılmadı. " + candidate.getEmail()
 					+ "Adresine doğrulama kodu gönderildi");
 		}
