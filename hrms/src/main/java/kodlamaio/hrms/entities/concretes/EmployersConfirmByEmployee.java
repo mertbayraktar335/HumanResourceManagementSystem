@@ -1,5 +1,6 @@
 package kodlamaio.hrms.entities.concretes;
 
+import java.sql.Date;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -9,35 +10,37 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.annotation.JsonProperty.Access;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Data
-@Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@Table(name="resume_links")
-public class ResumeLink {
+@Entity
+@Table(name="employers_confirm_by_employees")
+public class EmployersConfirmByEmployee {
 
-	
 	@Id
-	@JsonIgnore
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name="id")
+	@Column(name = "id")
 	private int id;
 	
-	@JsonIgnore
-	@ManyToOne
-	@JoinColumn(name="resume_id",referencedColumnName = "id")
-	private Resume resume;
+	@Column(name = "is_confirmed")
+	private boolean isConfirmed;
 	
-	@Column(name="link")
-	private String link;
+	@Column(name = "confirm_date")
+	private LocalDateTime confirmDate;
+	
+	@ManyToOne()
+	@JoinColumn(name="employee_id")
+	private Employee employee;
+	
+	@OneToOne()
+	@JoinColumn(name="employer_id")
+	private Employer employer;
 }

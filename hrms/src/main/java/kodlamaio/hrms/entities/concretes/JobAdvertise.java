@@ -1,7 +1,7 @@
 package kodlamaio.hrms.entities.concretes;
 
 import java.sql.Date;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -47,7 +47,7 @@ public class JobAdvertise {
 	
 	@JsonIgnore
 	@Column(name="created_date")
-	private LocalDateTime createdDate = LocalDateTime.now();
+	private LocalDate createdDate = LocalDate.now();
 	
 	@Column(name="application_deadline")
 	private Date applicationDeadline; 
@@ -71,8 +71,13 @@ public class JobAdvertise {
 	@JoinColumn(name="city_id",referencedColumnName = "id")
 	private City city;
 	
+	@ManyToOne
+	@JoinColumn(name="job_type_id",referencedColumnName = "id")
+	private JobType jobType;
 	
 	
+	@Column(name="is_remote")
+	private boolean isRemote;
 	
 	
 	

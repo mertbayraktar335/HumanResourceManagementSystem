@@ -14,7 +14,7 @@ public interface JobAdvertiseDao extends JpaRepository<JobAdvertise, Integer> {
 	
 	List<JobAdvertise> findByIsActiveOrderByCreatedDateDesc(boolean isActive);
 	
-	List<JobAdvertise> findByIsActiveAndEmployer_CompanyName(boolean isActive,String employerName);
+	List<JobAdvertise> findByIsActiveAndEmployer_CompanyName(boolean isActive,String companyName);
 	
 	List<JobAdvertise> findByIsActiveOrderByCreatedDateAsc(boolean isActive);
 	

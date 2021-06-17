@@ -6,7 +6,7 @@ import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import kodlamaio.hrms.business.abstracts.ConfirmByEmployeeService;
+import kodlamaio.hrms.business.abstracts.EmployersConfirmByEmployeeService;
 import kodlamaio.hrms.business.abstracts.EmployerService;
 import kodlamaio.hrms.core.adapters.abstracts.RegexService;
 import kodlamaio.hrms.core.adapters.abstracts.VerificationCodeService;
@@ -24,17 +24,17 @@ public class EmployerManager implements EmployerService {
 	private VerificationCodeService verificationCodeService;
 	private EmployerDao employerDao;
 	private RegexService regexService;
-	private ConfirmByEmployeeService confirmByEmployeeService;
+	private EmployersConfirmByEmployeeService employersConfirmByEmployeeService;
 	
 	
 	@Autowired
 	public EmployerManager(VerificationCodeService verificationCodeService, EmployerDao employerDao,
-			RegexService regexService, ConfirmByEmployeeService confirmByEmployeeService) {
+			RegexService regexService, EmployersConfirmByEmployeeService employersConfirmByEmployeeService) {
 		super();
 		this.verificationCodeService = verificationCodeService;
 		this.employerDao = employerDao;
 		this.regexService = regexService;
-		this.confirmByEmployeeService = confirmByEmployeeService;
+		this.employersConfirmByEmployeeService = employersConfirmByEmployeeService;
 	}
 
 	@Override
@@ -82,7 +82,7 @@ public class EmployerManager implements EmployerService {
 			else {
 			this.employerDao.save(employer);
 			this.verificationCodeService.createActivationCode(employer);
-			this.confirmByEmployeeService.TableSettler(employer);
+			this.employersConfirmByEmployeeService.TableSettler(employer);
 		
 			return new SuccessResult (employer.getEmail() + " Adresine doğrulama kodu gönderildi");
 			

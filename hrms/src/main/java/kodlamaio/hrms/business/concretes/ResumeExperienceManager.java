@@ -50,4 +50,11 @@ public class ResumeExperienceManager implements ResumeExperienceService{
 		return new SuccessDataResult<List<ResumeExperienceAddDto>>(dtoConverterService.entityToDto(resumeExperienceDao.findByResumeIdOrderByEndDateDesc(resumeId),ResumeExperienceAddDto.class),"İş Tecrübeleri Tarihe Göre listelendi");
 	}
 
+
+	@Override
+	public Result addAll(List<ResumeExperience> resumeExperience) {
+		resumeExperienceDao.saveAll(resumeExperience);
+		return new SuccessResult();
+	}
+
 }

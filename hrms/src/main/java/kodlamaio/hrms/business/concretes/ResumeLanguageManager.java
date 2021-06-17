@@ -42,4 +42,11 @@ public class ResumeLanguageManager  implements ResumeLanguageService{
 	public DataResult<List<ResumeLanguageAddDto>> findAllByResumeId(int resumeId) {
 		return new SuccessDataResult<List<ResumeLanguageAddDto>>(dtoConverterService.entityToDto(resumeLanguageDao.findAllByResumeId(resumeId),ResumeLanguageAddDto.class),"Diller Listelendi");
 	}
+
+
+	@Override
+	public Result addAll(List<ResumeLanguage> resumeLanguage) {
+		resumeLanguageDao.saveAll(resumeLanguage);
+		return new SuccessResult();
+	}
 }

@@ -13,7 +13,6 @@ import kodlamaio.hrms.core.results.SuccessDataResult;
 import kodlamaio.hrms.core.results.SuccessResult;
 import kodlamaio.hrms.dataAccess.abstracts.ResumeCoverLetterDao;
 import kodlamaio.hrms.entities.concretes.ResumeCoverLetter;
-import kodlamaio.hrms.entities.concretes.ResumeSkill;
 import kodlamaio.hrms.entities.dtos.ResumeCoverLetterAddDto;
 
 @Service
@@ -40,6 +39,12 @@ public class ResumeCoverLetterManager implements ResumeCoverLetterService {
 	@Override
 	public DataResult<List<ResumeCoverLetterAddDto>> findAllByResumeId(int resumeId) {
 		return new SuccessDataResult<List<ResumeCoverLetterAddDto>>(dtoConverterService.entityToDto(resumeCoverLetterDao.findAllByResumeId(resumeId),ResumeCoverLetterAddDto.class),"Başlıklar Listelendi");
+	}
+
+	@Override
+	public Result addAll(List<ResumeCoverLetter> resumeCoverLetter) {
+		resumeCoverLetterDao.saveAll(resumeCoverLetter);
+		return new SuccessResult();
 	}
 
 }

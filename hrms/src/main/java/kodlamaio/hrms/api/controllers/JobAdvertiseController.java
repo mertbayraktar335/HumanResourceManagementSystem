@@ -2,6 +2,7 @@ package kodlamaio.hrms.api.controllers;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +18,9 @@ import kodlamaio.hrms.entities.dtos.JobAdvertiseAddDto;
 import kodlamaio.hrms.entities.dtos.JobAdvertiseDto;
 
 @RestController
+@CrossOrigin
 @RequestMapping("/job_advertises")
+
 public class JobAdvertiseController {
 	
 	JobAdvertiseService jobAdvertiseService;
@@ -29,7 +32,7 @@ public class JobAdvertiseController {
 	
 	@GetMapping("/getbyisactive")
 	public DataResult<List<JobAdvertiseDto>> findAllByIsActive(){
-		return jobAdvertiseService.findAllByIsActive(true);
+		return jobAdvertiseService.findAllByIsActive();
 	}
 	@PostMapping("/activedeactive")
 	public Result isActive(int id, boolean status) {
@@ -42,20 +45,20 @@ public class JobAdvertiseController {
 		
 	}
 	 @GetMapping("/getbydateDesc")
-	 public DataResult<List<JobAdvertiseDto>> findByIsActiveOrderByCreatedDateDesc(boolean isActive){
-		 return jobAdvertiseService.findByIsActiveOrderByCreatedDateDesc(isActive);
+	 public DataResult<List<JobAdvertiseDto>> findByIsActiveOrderByCreatedDateDesc(){
+		 return jobAdvertiseService.findByIsActiveOrderByCreatedDateDesc();
 	 }
 	@DeleteMapping("/deletebyid")
 	public Result deleteById(@RequestParam int  id) {
 		return jobAdvertiseService.deleteById(id);
 	}
 	@GetMapping("/getbycompanynameandisactive")
-	public DataResult<List<JobAdvertiseDto>> findByIsActiveAndEmployer_CompanyName(boolean isActive, String employerName){
-		return findByIsActiveAndEmployer_CompanyName(true, employerName);
+	public DataResult<List<JobAdvertiseDto>> findByIsActiveAndEmployer_CompanyName(String employerName){
+		return findByIsActiveAndEmployer_CompanyName(employerName);
 	}
 	@GetMapping("/getbydateAsc")
-	DataResult<List<JobAdvertiseDto>> findByIsActiveOrderByCreatedDateAsc(boolean isActive){
-	return jobAdvertiseService.findByIsActiveOrderByCreatedDateAsc(isActive);
+	DataResult<List<JobAdvertiseDto>> findByIsActiveOrderByCreatedDateAsc(){
+	return jobAdvertiseService.findByIsActiveOrderByCreatedDateAsc();
 	}
 
 }

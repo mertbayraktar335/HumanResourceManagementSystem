@@ -4,11 +4,13 @@ import java.util.List;
 
 import kodlamaio.hrms.core.results.DataResult;
 import kodlamaio.hrms.core.results.Result;
+import kodlamaio.hrms.entities.concretes.ResumeCoverLetter;
 import kodlamaio.hrms.entities.dtos.ResumeCoverLetterAddDto;
 
 public interface ResumeCoverLetterService {
 	
 	Result add(ResumeCoverLetterAddDto resumeCoverLetterAddDto);
 	DataResult<List<ResumeCoverLetterAddDto>> findAllByResumeId(int resumeId);
+	Result addAll(List<ResumeCoverLetter> resumeCoverLetter);
 
 }

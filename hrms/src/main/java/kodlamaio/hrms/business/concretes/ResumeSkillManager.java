@@ -43,4 +43,11 @@ public class ResumeSkillManager implements ResumeSkillService {
 		return new SuccessDataResult<List<ResumeSkillDto>>(dtoConverterService.entityToDto(resumeSkillDao.findAllByResumeId(resumeId),ResumeSkillDto.class),"Yetenekler Listelendi");
 	}
 
+
+	@Override
+	public Result addAll(List<ResumeSkill> resumeSkill) {
+		resumeSkillDao.saveAll(resumeSkill);
+		return new SuccessResult();
+	}
+
 }

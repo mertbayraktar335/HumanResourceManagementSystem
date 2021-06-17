@@ -13,13 +13,13 @@ public interface JobAdvertiseService {
 	
 	Result deleteById(int id);
 	
-	DataResult<List<JobAdvertiseDto>> findAllByIsActive(boolean isActive);
+	DataResult<List<JobAdvertiseDto>> findAllByIsActive();
 	
-	DataResult<List<JobAdvertiseDto>> findByIsActiveOrderByCreatedDateDesc(boolean isActive);
+	DataResult<List<JobAdvertiseDto>> findByIsActiveOrderByCreatedDateDesc();
 	
-	DataResult<List<JobAdvertiseDto>> findByIsActiveOrderByCreatedDateAsc(boolean isActive);
+	DataResult<List<JobAdvertiseDto>> findByIsActiveOrderByCreatedDateAsc();
 	
-	DataResult<List<JobAdvertiseDto>> findByIsActiveAndEmployer_CompanyName(boolean isActive,String employerName);
+	DataResult<List<JobAdvertiseDto>> findByIsActiveAndEmployer_CompanyName(String companyName);
 	
 	Result isActive(int id,boolean isActive);
 

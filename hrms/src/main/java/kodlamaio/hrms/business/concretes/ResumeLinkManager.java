@@ -43,4 +43,11 @@ public class ResumeLinkManager implements ResumeLinkService{
 		return new SuccessDataResult<List<ResumeLinkAddDto>>(dtoConverterService.entityToDto(resumeLinkDao.findAllByResumeId(resumeId),ResumeLinkAddDto.class),"Linkler Listelendi");
 	}
 
+
+	@Override
+	public Result addAll(List<ResumeLink> resumeLink) {
+		resumeLinkDao.saveAll(resumeLink);
+		return new SuccessResult();
+	}
+
 }

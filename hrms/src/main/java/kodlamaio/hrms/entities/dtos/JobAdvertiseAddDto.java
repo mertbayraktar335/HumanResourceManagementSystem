@@ -29,6 +29,8 @@ public class JobAdvertiseAddDto {
 	private int numberOfOpenPositions;
 	private Date applicationDeadline;
 	private String jobAdvertiseName;
+	private String jobTypeTypeName;
+	private boolean isRemote;
 	
 	
 	
